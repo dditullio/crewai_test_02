@@ -23,33 +23,54 @@ class ScrumProject():
 	# If you would like to add tools to your agents, you can learn more about it here:
 	# https://docs.crewai.com/concepts/agents#agent-tools
 	@agent
-	def researcher(self) -> Agent:
+	def product_owner(self) -> Agent:
 		return Agent(
-			config=self.agents_config['researcher'],
+			config=self.agents_config['product_owner'],
 			verbose=True
 		)
 
-	@agent
-	def reporting_analyst(self) -> Agent:
-		return Agent(
-			config=self.agents_config['reporting_analyst'],
-			verbose=True
-		)
+	# @agent
+	# def reporting_analyst(self) -> Agent:
+	# 	return Agent(
+	# 		config=self.agents_config['reporting_analyst'],
+	# 		verbose=True
+	# 	)
 
 	# To learn more about structured task outputs, 
 	# task dependencies, and task callbacks, check out the documentation:
 	# https://docs.crewai.com/concepts/tasks#overview-of-a-task
 	@task
-	def research_task(self) -> Task:
+	def product_owner_research_analysis_design(self) -> Task:
 		return Task(
-			config=self.tasks_config['research_task'],
+			config=self.tasks_config['product_owner_research_analysis_design'],
 		)
 
 	@task
-	def reporting_task(self) -> Task:
+	def product_owner_create_specifications(self) -> Task:
 		return Task(
-			config=self.tasks_config['reporting_task'],
-			output_file='report.md'
+			config=self.tasks_config['product_owner_create_specifications'],
+			output_file='specifications.md'
+		)
+
+	@task
+	def product_owner_create_user_stories(self) -> Task:
+		return Task(
+			config=self.tasks_config['product_owner_create_user_stories'],
+			output_file='user_stories.md'
+		)
+
+	@task
+	def product_owner_create_product_backlog(self) -> Task:
+		return Task(
+			config=self.tasks_config['product_owner_create_product_backlog'],
+			output_file='product_backlog.md'
+		)
+
+	@task
+	def product_owner_refine_backlog(self) -> Task:
+		return Task(
+			config=self.tasks_config['product_owner_refine_backlog'],
+			output_file='refined_backlog.md'
 		)
 
 	@crew

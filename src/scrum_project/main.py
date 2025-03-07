@@ -21,8 +21,8 @@ def run():
     print("\n🚀 ¡Ejecutando el equipo SCRUM! 🚀")
     
     inputs = {
-        'topic': 'AI LLMs',
-        'current_year': str(datetime.now().year)
+        'product': 'App de GPS y navegador marino para Android desarrollada en flutter',
+        'num_stories': '20'
     }
     
     try:
@@ -35,28 +35,28 @@ def run():
         raise Exception(f"An error occurred while running the crew: {e}")
 
 
-def train():
-    """
-    Train the crew for a given number of iterations.
-    """
-    inputs = {
-        "topic": "AI LLMs"
-    }
-    try:
-        ScrumProject().crew().train(n_iterations=int(sys.argv[1]), filename=sys.argv[2], inputs=inputs)
+# def train():
+#     """
+#     Train the crew for a given number of iterations.
+#     """
+#     inputs = {
+#         "topic": "AI LLMs"
+#     }
+#     try:
+#         ScrumProject().crew().train(n_iterations=int(sys.argv[1]), filename=sys.argv[2], inputs=inputs)
 
-    except Exception as e:
-        raise Exception(f"An error occurred while training the crew: {e}")
+#     except Exception as e:
+#         raise Exception(f"An error occurred while training the crew: {e}")
 
-def replay():
-    """
-    Replay the crew execution from a specific task.
-    """
-    try:
-        ScrumProject().crew().replay(task_id=sys.argv[1])
+# def replay():
+#     """
+#     Replay the crew execution from a specific task.
+#     """
+#     try:
+#         ScrumProject().crew().replay(task_id=sys.argv[1])
 
-    except Exception as e:
-        raise Exception(f"An error occurred while replaying the crew: {e}")
+#     except Exception as e:
+#         raise Exception(f"An error occurred while replaying the crew: {e}")
 
 # def test():
 #     """
