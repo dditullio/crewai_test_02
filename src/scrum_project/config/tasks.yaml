@@ -1,0 +1,76 @@
+# research_task:
+#   description: >
+#     Conduct a thorough research about {topic}
+#     Make sure you find any interesting and relevant information given
+#     the current year is {current_year}.
+#   expected_output: >
+#     A list with 10 bullet points of the most relevant information about {topic}
+#   agent: researcher
+
+# reporting_task:
+#   description: >
+#     Review the context you got and expand each topic into a full section for a report.
+#     Make sure the report is detailed and contains any and all relevant information.
+#   expected_output: >
+#     A fully fledged report with the main topics, each with a full section of information.
+#     Formatted as markdown without '```'
+#   agent: reporting_analyst
+
+product_owner_research_analysis_design:
+  description: >
+    Investiga a fondo el producto {product}. Analiza el mercado objetivo, la competencia y las tendencias relevantes.
+    Identifica las necesidades y deseos de los usuarios potenciales.
+    Diseña las funcionalidades y requerimientos principales del producto, priorizando aquellas que aporten mayor valor.
+    Asegúrate de considerar las restricciones técnicas y de negocio.
+  expected_output: >
+    Un documento que incluya:
+    - Un resumen ejecutivo del producto {product}.
+    - Un análisis del mercado y la competencia.
+    - Un perfil detallado del usuario objetivo.
+    - Una lista priorizada de funcionalidades y requerimientos del producto.
+    - Un esquema de la arquitectura del producto.
+  agent: product_owner
+
+product_owner_create_specifications:
+  description: >
+    Crea un documento de especificaciones del producto completo y detallado.
+    Incluye la visión del producto, los objetivos, las funcionalidades, los requisitos, los criterios de aceptación y cualquier otra información relevante.
+    Asegúrate de que el documento sea claro, conciso y comprensible para todos los stakeholders.
+  expected_output: >
+    Un documento de especificaciones del producto completo y actualizado.
+  agent: product_owner
+
+product_owner_create_user_stories:
+  description: >
+    Crea al menos {num_stories} historias de usuario claras y concisas que describan las necesidades del usuario y el valor que se entregará.
+    Asegúrate de que las historias de usuario sean independientes, negociables, valiosas, estimables, pequeñas y comprobables (INVEST).
+  expected_output: >
+    Un conjunto de historias de usuario bien escritas que representen los requisitos del producto.
+  agent: product_owner
+
+product_owner_create_product_backlog:
+  description: >
+    Crea el Product Backlog a partir del documento de especificaciones del producto.
+    Desglosa las funcionalidades en elementos del backlog, como historias de usuario, tareas o errores.
+    Puedes basarte en historias de usuario definidas previamente. Prioriza los elementos del backlog según el valor que aportan al producto y al negocio.
+  expected_output: >
+    Un Product Backlog completo y priorizado, listo para la planificación del sprint.
+  agent: product_owner
+
+product_owner_refine_backlog:
+  description: >
+    Refina el Product Backlog, asegurando que los elementos estén detallados, estimados y priorizados.
+    Trabaja con el equipo para aclarar los requisitos y responder a las preguntas.
+  expected_output: >
+    Un Product Backlog actualizado y refinado, con elementos claros y listos para el próximo Sprint.
+  agent: product_owner
+
+product_owner_accept_increments:
+  description: >
+    Revisa y acepta los incrementos del producto completados por el equipo.
+    Asegúrate de que cumplan con los criterios de aceptación y que entreguen valor al usuario.
+  expected_output: >
+    Una lista de incrementos del producto aceptados o rechazados, con comentarios claros para el equipo.
+  agent: product_owner
+
+  
