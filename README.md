@@ -18,6 +18,16 @@ Next, navigate to your project directory and install the dependencies:
 ```bash
 crewai install
 ```
+
+En el archivo ```crew.py``` hay que agregar los siguiente para que lea las variables de entorno:
+```bash
+import os
+from dotenv import load_dotenv  # 📌 Importamos dotenv para leer el .env
+
+# 🔥 Cargamos el archivo .env
+load_dotenv()
+```
+
 ### Customizing
 
 **Add your `OPENAI_API_KEY` into the `.env` file**
