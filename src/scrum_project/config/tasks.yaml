@@ -39,6 +39,8 @@ product_owner_create_specifications:
   expected_output: >
     Un documento de especificaciones del producto completo y actualizado.
   agent: product_owner
+  depends_on:
+    - product_owner_research_analysis_design
 
 product_owner_create_user_stories:
   description: >
@@ -47,6 +49,8 @@ product_owner_create_user_stories:
   expected_output: >
     Un conjunto de historias de usuario bien escritas que representen los requisitos del producto.
   agent: product_owner
+  depends_on:
+    - product_owner_create_specifications
 
 product_owner_create_product_backlog:
   description: >
@@ -56,14 +60,22 @@ product_owner_create_product_backlog:
   expected_output: >
     Un Product Backlog completo y priorizado, listo para la planificación del sprint.
   agent: product_owner
+  depends_on:
+    - product_owner_create_user_stories
 
 product_owner_refine_backlog:
   description: >
-    Refina el Product Backlog, asegurando que los elementos estén detallados, estimados y priorizados.
-    Trabaja con el equipo para aclarar los requisitos y responder a las preguntas.
+    Refina el Product Backlog, asegurando que los elementos estén detallados, estimados y priorizados. 
+    Trabaja con el equipo para aclarar los requisitos y responder a las preguntas.  
+    **Cuando hagas preguntas al equipo, usa este formato:**  
+    - ❌ **Evita preguntas generales:** "¿Todo está claro con las historias de usuario?"  
+    - ✅ **Usa preguntas detalladas:** "¿Hay dudas sobre la funcionalidad de la historia HU-05 respecto a la API de pagos? ¿Es necesario ajustar los criterios de aceptación?"  
+    **Cuando des respuestas, asegúrate de proporcionar detalles útiles y estructurados.**
   expected_output: >
     Un Product Backlog actualizado y refinado, con elementos claros y listos para el próximo Sprint.
   agent: product_owner
+  depends_on:
+    - product_owner_create_product_backlog
 
 product_owner_accept_increments:
   description: >
@@ -72,5 +84,98 @@ product_owner_accept_increments:
   expected_output: >
     Una lista de incrementos del producto aceptados o rechazados, con comentarios claros para el equipo.
   agent: product_owner
+  depends_on:
+    - scrum_master_sprint_review
+
+
+scrum_master_create_sprint_backlog:
+  description: >
+    Facilita la creación del Sprint Backlog durante la reunión de planificación del sprint.
+    Ayuda al equipo a seleccionar los elementos del Product Backlog que se comprometerán a completar durante el sprint.
+    Asegura que el Sprint Backlog sea claro, conciso y que refleje los objetivos del sprint.
+    Ayuda al equipo a desglosar las tareas y estimar el esfuerzo requerido.
+  expected_output: >
+    Un Sprint Backlog completo y detallado que incluya:
+    - Los elementos del Product Backlog seleccionados para el sprint.
+    - Las tareas desglosadas y estimadas.
+    - La asignación de tareas a los miembros del equipo.
+  agent: scrum_master
+  depends_on:
+    - product_owner_create_product_backlog
 
   
+scrum_master_sprint_planning:
+  description: >
+    Facilita la reunión de planificación del sprint.
+    Asegúrate de que el equipo comprenda los objetivos del sprint y seleccione las tareas del backlog del producto que se comprometerá a completar.
+    Ayuda al equipo a desglosar las tareas en subtareas y a estimar el esfuerzo requerido.
+    Elimina cualquier impedimento que surja durante la reunión.
+  expected_output: >
+    Un plan de sprint claro y conciso que incluya:
+    - Los objetivos del sprint.
+    - Las tareas del sprint backlog.
+    - La asignación de tareas a los miembros del equipo.
+    - La estimación del esfuerzo para cada tarea.
+  agent: scrum_master
+  depends_on:
+    - scrum_master_create_sprint_backlog
+
+scrum_master_daily_scrum:
+  description: >
+<<<<<<< HEAD
+    Facilita la reunión diaria de Scrum. 
+    Asegúrate de que cada miembro del equipo proporcione información clara y estructurada al responder las siguientes preguntas: 
+    1️⃣ ¿Qué hice ayer?  
+    2️⃣ ¿Qué haré hoy?  
+    3️⃣ ¿Hay algún impedimento que afecte mi trabajo?  
+    Cuando los miembros del equipo mencionen impedimentos, **haz preguntas específicas y solicita detalles concretos** para poder ayudarles de manera efectiva.
+  expected_output: >
+    Una reunión diaria de Scrum efectiva y productiva que permita al equipo sincronizarse y avanzar hacia el objetivo del sprint.
+=======
+    Facilita la reunión diaria de scrum.
+    Asegúrate de que cada miembro del equipo responda a las tres preguntas: ¿Qué hice ayer? ¿Qué haré hoy? ¿Hay algún impedimento?
+    Ayuda al equipo a identificar y resolver impedimentos.
+    Mantén la reunión enfocada y dentro del límite de tiempo.
+  expected_output: >
+    Una reunión diaria de scrum efectiva y productiva que permita al equipo sincronizarse y avanzar hacia el objetivo del sprint.
+>>>>>>> b319dde38f4c0b834d9082d465b78ab75fd0b7f8
+  agent: scrum_master
+  depends_on:
+    - scrum_master_sprint_planning
+
+<<<<<<< HEAD
+scrum_master_monitor_sprint:
+  description: >
+    Monitorea el progreso del sprint y apoya al equipo en la resolución de impedimentos.
+    Asegura que el equipo mantenga el enfoque en los objetivos del sprint.
+    Interviene en caso de bloqueos o problemas de comunicación entre los miembros del equipo.
+  expected_output: >
+    Un sprint fluido y sin bloqueos, con reportes de problemas resueltos durante su desarrollo.
+  agent: scrum_master
+  depends_on:
+    - scrum_master_daily_scrum
+
+=======
+>>>>>>> b319dde38f4c0b834d9082d465b78ab75fd0b7f8
+scrum_master_sprint_review:
+  description: >
+    Facilita la reunión de revisión del sprint.
+    Asegúrate de que el equipo demuestre el trabajo completado durante el sprint.
+    Recopila comentarios de los stakeholders.
+    Ayuda al equipo a identificar mejoras para el próximo sprint.
+  expected_output: >
+    Una reunión de revisión del sprint que permita al equipo obtener retroalimentación valiosa y mejorar continuamente.
+  agent: scrum_master
+  depends_on:
+    - scrum_master_sprint_planning
+
+scrum_master_sprint_retrospective:
+  description: >
+    Facilita la reunión de retrospectiva del sprint.
+    Ayuda al equipo a identificar qué funcionó bien, qué se puede mejorar y qué acciones se pueden tomar para mejorar el próximo sprint.
+    Crea un ambiente seguro y colaborativo donde el equipo pueda compartir abiertamente sus ideas.
+  expected_output: >
+    Un plan de acción con mejoras concretas para el próximo sprint.
+  agent: scrum_master
+  depends_on:
+    - scrum_master_sprint_review

@@ -1,60 +1,19 @@
-## Product Backlog: Aplicación MarinoGPS - Versión 1.0
+## Product Backlog - Aplicación de Navegación Marina
 
-Este Product Backlog contiene las funcionalidades de la aplicación MarinoGPS, priorizadas para un lanzamiento mínimo viable (MVP) y futuras iteraciones.  Se basa en el Documento de Especificaciones del Producto y en las historias de usuario proporcionadas.  Cada elemento incluye una estimación de esfuerzo (en puntos de historia, utilizando la escala de Fibonacci: 1, 2, 3, 5, 8, 13, 20...).  La prioridad se indica con Alta, Media o Baja.
+**Escala de Estimación:** Fibonacci (1, 2, 3, 5, 8, 13, 20, 40, 100)  *Nota: Se utilizará la secuencia de Fibonacci para estimar la complejidad relativa de cada historia de usuario.  Un valor más alto indica mayor complejidad.*
 
-**Prioridad Alta:**
+**Priorización:** Se prioriza según el valor para el negocio y el usuario, considerando la dependencia entre historias.  Se utiliza la técnica de MoSCoW (Must have, Should have, Could have, Won't have) para una mejor priorización.
 
-| ID | Elemento del Backlog | Descripción | Historias de Usuario Relacionadas | Prioridad | Estimación | Estado |
+| ID | Historia de Usuario | Tareas | Criterios de Aceptación | Estimación | Prioridad (MoSCoW) | Dependencias |
 |---|---|---|---|---|---|---|
-| 1 | Implementación de la visualización del mapa | Mostrar la posición actual del usuario en un mapa, incluyendo la posibilidad de zoom y desplazamiento. | 1, 4, 9 | Alta | 8 | No iniciado |
-| 2 | Implementación de la funcionalidad de Waypoints | Permitir la marcación, edición y eliminación de waypoints en el mapa. | 2 | Alta | 5 | No iniciado |
-| 3 | Implementación de la creación y gestión de rutas | Permitir la creación, edición, guardado y carga de rutas con múltiples waypoints. | 3 | Alta | 13 | No iniciado |
-| 4 | Integración con mapas náuticos vectoriales (OpenStreetMap) | Mostrar mapas náuticos con información de profundidades, boyas, faros y zonas de peligro. | 4, 5 | Alta | 20 | No iniciado |
-| 5 | Descarga de mapas offline | Permitir la descarga de mapas para su uso sin conexión a internet. | 5 | Alta | 8 | No iniciado |
-| 6 | Integración con API meteorológica | Obtener y mostrar datos meteorológicos en tiempo real (viento, olas, temperatura, presión). | 6, 7 | Alta | 13 | No iniciado |
-| 7 | Sistema de notificaciones push para alertas meteorológicas | Enviar notificaciones al usuario sobre fenómenos meteorológicos adversos. | 6, 7 | Alta | 3 | No iniciado |
-| 8 | Compartir ubicación en tiempo real | Permitir al usuario compartir su ubicación actual con contactos seleccionados. | 8 | Alta | 5 | No iniciado |
-| 9 | Implementación de la brújula digital | Mostrar la dirección de rumbo del dispositivo. | 10 | Alta | 2 | No iniciado |
-| 10 | Mejora de la UI/UX para una navegación intuitiva | Diseño y desarrollo de una interfaz de usuario amigable e intuitiva. | 9 | Alta | 13 | No iniciado |
+| 1 | Como capitán, quiero poder ver mi posición GPS en tiempo real en un mapa, para asegurarme de mi ubicación. | * Obtener coordenadas GPS. <br> * Mostrar coordenadas en mapa. <br> * Implementar actualización en tiempo real. <br> * Diseño de interfaz de usuario para visualización de GPS. |  * Las coordenadas GPS se muestran con precisión en el mapa. <br> * Las coordenadas se actualizan al menos cada 5 segundos. <br> * La interfaz de usuario es clara y fácil de usar. | 5 | Must have | Ninguna |
+| 2 | Como navegante, quiero poder marcar puntos de interés (waypoints) en el mapa, para planificar mi ruta. | * Implementar funcionalidad para agregar waypoints. <br> * Guardar coordenadas de los waypoints. <br> * Mostrar waypoints en el mapa. <br> * Diseño de interfaz para gestión de waypoints. | * Los waypoints se pueden agregar, editar y eliminar. <br> * Se guardan las coordenadas y un nombre para cada waypoint. <br> * Los waypoints se muestran claramente en el mapa. | 8 | Must have | 1 |
+| 3 | Como capitán, quiero poder trazar una ruta entre múltiples waypoints, para navegar eficientemente. | * Algoritmo de cálculo de ruta óptima. <br> * Visualización de ruta en el mapa. <br> * Posibilidad de guardar y cargar rutas. <br> * Diseño de interfaz para gestión de rutas. | * Se calcula la ruta más corta y eficiente entre los waypoints. <br> * La ruta se muestra claramente en el mapa. <br> * Las rutas se pueden guardar y cargar. | 13 | Must have | 2 |
+| 4 | Como navegante, quiero ver información meteorológica en tiempo real, para tomar decisiones de navegación seguras. | * Integración con API meteorológica. <br> * Mostrar datos meteorológicos (viento, olas, etc.). <br> * Diseño de interfaz para visualización meteorológica. | * Se muestran datos meteorológicos precisos y actualizados. <br> * La información meteorológica es fácil de entender. <br> * La fuente de datos meteorológicos es confiable. | 20 | Should have | Ninguna |
+| 5 | Como capitán, quiero poder compartir mi posición con otros barcos, para mejorar la seguridad en el mar. | * Implementar función de envío de posición. <br> * Implementar función de recepción de posición. <br> * Diseño de interfaz para compartir posición. | * Se puede compartir la posición en tiempo real con barcos seleccionados. <br> * Se pueden recibir posiciones de otros barcos. <br> * La privacidad del usuario está asegurada. | 13 | Should have | 1 |
+| 6 | Como usuario, quiero poder personalizar la apariencia de la aplicación (ej: temas), para adaptar la interfaz a mis preferencias. | * Implementar diferentes temas de color. <br> * Permitir al usuario seleccionar un tema. <br> * Guardar las preferencias de tema. | * Se pueden seleccionar diferentes temas. <br> * El tema seleccionado se guarda y se aplica en el siguiente inicio. | 5 | Could have | Ninguna |
+| 7 | Como navegante, quiero recibir alertas de proximidad a peligros (ej: rocas, boyas), para evitar colisiones. | * Base de datos de peligros. <br> * Algoritmo de detección de proximidad. <br> * Sistema de alertas. | * Se detectan peligros cercanos. <br> * Se emiten alertas visuales y auditivas. <br> * La base de datos de peligros es actualizada periódicamente. | 20 | Could have | 1 |
+| 8 | Como capitán, quiero poder exportar datos de navegación (rutas, waypoints) a diferentes formatos, para poder usarlos en otros programas. | * Implementar la exportación a formato GPX. <br> * Implementar la exportación a formato KML. | * Los datos se exportan correctamente en el formato seleccionado. <br> * La exportación funciona sin errores. | 8 | Could have | 2 |
 
 
-**Prioridad Media:**
-
-| ID | Elemento del Backlog | Descripción | Historias de Usuario Relacionadas | Prioridad | Estimación | Estado |
-|---|---|---|---|---|---|---|
-| 11 | Integración con sensores NMEA 2000 | Lectura y visualización de datos de sensores NMEA 2000 (velocidad, rumbo, profundidad, etc.). | 11 | Media | 13 | No iniciado |
-| 12 | Sistema de alertas configurable | Permitir al usuario configurar diferentes tipos de alertas (proximidad a zonas de peligro, desviaciones de ruta, etc.). | 12 | Media | 5 | No iniciado |
-| 13 | Registro de Bitácora | Registro automático de las rutas realizadas, incluyendo fecha, hora, waypoints y datos de sensores. | 13, 14 | Media | 8 | No iniciado |
-| 14 | Exportación de Bitácora | Permitir la exportación de la bitácora en formatos CSV o KML. | 14 | Media | 3 | No iniciado |
-| 15 | Búsqueda de lugares de interés marinos | Implementar una función de búsqueda de puertos, puntos de amarre, etc. en el mapa. | 15 | Media | 5 | No iniciado |
-
-
-**Prioridad Baja:**
-
-| ID | Elemento del Backlog | Descripción | Historias de Usuario Relacionadas | Prioridad | Estimación | Estado |
-|---|---|---|---|---|---|---|
-| 16 | Implementación de un foro de discusión | Permitir a los usuarios interactuar en un foro. | 16 | Baja | 20 | No iniciado |
-| 17 | Implementación de realidad aumentada | Superponer información en la imagen de la cámara. | 17 | Baja | 20 | No iniciado |
-| 18 | Integración con plataformas de reserva de amarres | Permitir reservar amarres directamente desde la app. | 18 | Baja | 20 | No iniciado |
-| 19 | Integración con plataformas de alquiler de embarcaciones | Permitir buscar y alquilar embarcaciones desde la app. | 19 | Baja | 20 | No iniciado |
-| 20 | Soporte multilingüe | Traducir la aplicación a varios idiomas. | 20 | Baja | 8 | No iniciado |
-
-
-**Errores:**
-
-*  (Se añadirán errores detectados durante el desarrollo)
-
-
-**Tareas:**
-
-*  (Se añadirán tareas de apoyo al desarrollo, como la configuración del entorno de desarrollo, testing, etc.)
-
-
-**Notas:**
-
-*  Este Product Backlog es una versión inicial y se actualizará iterativamente.
-*  Las estimaciones de esfuerzo son aproximadas y pueden ser revisadas durante la planificación del sprint.
-*  El estado de cada elemento se actualizará durante el desarrollo.
-
-
-Este Product Backlog está listo para la planificación del sprint.  La priorización se basa en el valor empresarial y en la necesidad de ofrecer un MVP funcional en el menor tiempo posible.  Las funcionalidades de prioridad baja se consideran para futuras iteraciones del producto.
+**Nota:** Este Product Backlog es una propuesta inicial.  Se revisará y actualizará iterativamente a medida que el proyecto avance y se obtenga más información. Se realizarán refinamientos en las próximas reuniones de planificación de sprint.
